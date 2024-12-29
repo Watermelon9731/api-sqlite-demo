@@ -3,23 +3,19 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class Todo {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @Column({ default: false })
-  completed: boolean;
+  @Column({ unique: true })
+  email: string;
 
-  @CreateDateColumn()
-  createAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP' })
+  create_at: Date;
 }

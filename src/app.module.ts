@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodoModule } from './todo/todo.module';
+import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    TodoModule,
+    UsersModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'todo',
+      database: 'users',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
